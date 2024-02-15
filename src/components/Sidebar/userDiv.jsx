@@ -1,18 +1,21 @@
-import "../../index.css";
+import "../../App.css";
+import ProfilePicture from "../ProfilePicture";
+
+import Username from "../UserName";
 
 function UserDiv() {
   return (
     <div className="user-container">
-      <div className="user-profile-picture">
-        <img alt="Profile Picture" />
-      </div>
+      <ProfilePicture />
       <div className="user-chat-info">
         <div className="user-chat-row">
-          <div className="user-name">Kevin</div>
-          <div className="user-chat-msg-time">8:26 pm</div>
+         <Username />
         </div>
         <div className="user-chat-row">
-          <div className="user-last-msg">...</div>
+          <div className="user-last-msg-time">
+            <h6>
+            8:26 pm
+            </h6></div>
           <div className="user-chat-msg-count">3</div>
         </div>
       </div>
