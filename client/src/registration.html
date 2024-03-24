@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login & Registration Form</title>
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="./assets/css/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <input type="checkbox" id="check" />
+      <div class="login form">
+        <header>Login</header>
+        <form id="login-form">
+          <input
+            type="text"
+            id="login-username"
+            name="username"
+            placeholder="Enter your username"
+          />
+          <input
+            type="password"
+            name="password"
+            id="login-password"
+            placeholder="Enter your password"
+          />
+          <!--  <a href="#">Forgot password?</a> -->
+          <button id="loginButton" class="button login-button">Login</button>
+        </form>
+        <div class="signup">
+          <span class="signup"
+            >Don't have an account?
+            <label for="check">Signup</label>
+          </span>
+        </div>
+      </div>
+      <div class="registration form">
+        <header>Signup</header>
+        <form id="sign-in-form">
+          <div>
+            <input
+              type="text"
+              id="name"
+              value="Kevin Rodrigues"
+              name="name"
+              required
+              placeholder="Full Name"
+            />
+          </div>
+          <input
+            type="username"
+            required
+            value="kevin"
+            placeholder="Enter your username"
+            id="sign-in-username"
+            name="username"
+          />
+          <input
+            type="password"
+            required
+            value="kevin"
+            name="password"
+            id="sign-in-password"
+            placeholder="Create a password"
+          />
+          <button class="button sign-in-button">Sign up</button>
+        </form>
+        <div class="signup">
+          <span class="signup"
+            >Already have an account?
+            <label for="check">Login</label>
+          </span>
+        </div>
+      </div>
+    </div>
+    <script src="./assets/js/script.js" type="module"></script>
+  </body>
+</html>

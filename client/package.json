@@ -1,0 +1,21 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "buildcss": "npx tailwindcss -i ./src/assets/css/tailwind.css -o ./src/assets/css/chat.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io-client": "^4.7.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "daisyui": "^4.7.3",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.1"
+  }
+}
