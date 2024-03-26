@@ -32,7 +32,7 @@ const loginController = async (req, res, next) => {
       throw err;
     }
 
-    let token = jwt.sign({ id: userExist._id }, "kawasaki", {
+    let token = jwt.sign({ id: userExist._id }, process.env.JWT_TOKEN, {
       expiresIn: "1h",
     });
 

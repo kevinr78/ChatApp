@@ -32,8 +32,8 @@ async function loginUserToApp(e) {
       err = new Error(loginResponse.message);
       throw err;
     }
-    console.log(loginResponse);
-    localStorage.setItem("token", loginResponse.token);
+
+    localStorage.setItem(`token`, loginResponse.token);
     localStorage.setItem(
       "user",
       JSON.stringify({
@@ -41,7 +41,7 @@ async function loginUserToApp(e) {
         username: loginResponse.user.username,
       })
     );
-    window.location.href = "http://127.0.0.1:5500/client/src/home.html";
+    window.location.href = `http://127.0.0.1:5500/client/src/home.html?name=${loginResponse.user.name}&username=${loginResponse.user.username}`;
   } catch (error) {
     console.log(error);
   }
