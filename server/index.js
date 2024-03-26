@@ -1,5 +1,5 @@
 import express from "express";
-import { Server } from "socket.io";
+import { Server, Socket } from "socket.io";
 const app = express();
 import http from "http";
 import cors from "cors";
@@ -10,12 +10,18 @@ import MongoStore from "connect-mongo";
 import DBConnect from "./utils/DBConnect.js";
 import authRoutes from "./routes/auth.route.js";
 import chatRoutes from "./routes/chat.route.js";
+import initializeSocketIO from "./utils/socketInit.js";
 
 const server = http.createServer(app);
 app.use(cors());
 const io = new Server(server, {
-  origin: ["http://127.0.0.1:5500", "http://localhost:5500"],
+  cors: {
+    origin: ["http://127.0.0.1:5500", "http://localhost:5500"],
+    methods: ["GET", "POST"],
+  },
 });
+
+app.set("io", io);
 
 dotenv.config();
 app.use(express.static(path.join(import.meta.dirname, "public")));
@@ -35,11 +41,6 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use((req, res, next) => {
-  req.io = io;
-  next();
-});
-
 app.use("/auth", authRoutes);
 app.use("/chat", chatRoutes);
 
@@ -51,19 +52,9 @@ app.use((err, req, res, next) => {
   console.log(err);
 });
 
+initializeSocketIO(io);
+
 server.listen(5000, (req, res) => {
   DBConnect();
   console.log("server started on port 5000");
-});
-
-io.on("connection", (socket) => {
-  console.log("Cone");
-  socket.on("chat message", (msg) => {
-    io.emit("chat message", msg);
-  });
-
-  const users = [];
-  for (let [id, socket] of io.of("/").sockets) {
-    console.log(id, socket.id);
-  }
 });
