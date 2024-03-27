@@ -54,7 +54,7 @@ app.use((err, req, res, next) => {
 
 initializeSocketIO(io);
 
-server.listen(5000, (req, res) => {
+server.listen(3000, (req, res) => {
   DBConnect();
-  console.log("server started on port 5000");
+  console.log("server started on port 3000");
 });

@@ -32,8 +32,11 @@ async function loginUserToApp(e) {
       err = new Error(loginResponse.message);
       throw err;
     }
-
-    localStorage.setItem(`token`, loginResponse.token);
+    localStorage.clear();
+    localStorage.setItem(
+      "token-" + loginResponse.username,
+      loginResponse.token
+    );
     localStorage.setItem(
       "user",
       JSON.stringify({
