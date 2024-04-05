@@ -10,7 +10,7 @@ import MongoStore from "connect-mongo";
 import DBConnect from "./utils/DBConnect.js";
 import authRoutes from "./routes/auth.route.js";
 import chatRoutes from "./routes/chat.route.js";
-import initializeSocketIO from "./utils/socketInit.js";
+import { initializeSocketIO, socketMiddleware } from "./utils/socketInit.js";
 
 const server = http.createServer(app);
 app.use(cors());
@@ -51,7 +51,7 @@ app.get("/", (req, res) => {
 app.use((err, req, res, next) => {
   console.log(err);
 });
-
+socketMiddleware(io);
 initializeSocketIO(io);
 
 server.listen(3000, (req, res) => {

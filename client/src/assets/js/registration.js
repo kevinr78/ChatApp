@@ -2,7 +2,7 @@ const loginForm = document.querySelector("#login-form");
 const signInForm = document.querySelector("#sign-in-form");
 const loginButton = document.querySelector(".login-button");
 const signInButton = document.querySelector(".sign-in-button");
-const API_URL = "http://localhost:5000";
+const API_URL = "http://localhost:3000";
 
 loginButton.addEventListener("click", loginUserToApp);
 signInButton.addEventListener("click", signInUserToApp);
@@ -33,18 +33,9 @@ async function loginUserToApp(e) {
       throw err;
     }
     localStorage.clear();
-    localStorage.setItem(
-      "token-" + loginResponse.username,
-      loginResponse.token
-    );
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        name: loginResponse.user.name,
-        username: loginResponse.user.username,
-      })
-    );
-    window.location.href = `http://127.0.0.1:5500/client/src/home.html?name=${loginResponse.user.name}&username=${loginResponse.user.username}`;
+    localStorage.setItem("token", loginResponse.token);
+
+    window.location.href = `http://localhost:5500/client/src/home.html?name=${loginResponse.user.name}&username=${loginResponse.user.username}`;
   } catch (error) {
     console.log(error);
   }
@@ -75,7 +66,7 @@ async function signInUserToApp(e) {
       throw err;
     }
     alert("Account created!! login to get started");
-    window.location.href = "http://127.0.0.1:5500/client/src/registration.html";
+    window.location.href = "http://localhost:5500/client/src/registration.html";
   } catch (error) {
     console.log(error);
   }

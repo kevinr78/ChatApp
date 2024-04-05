@@ -73,8 +73,8 @@
               </div>
             </div>
             <div class="footer bg-base-100 p-2 absolute bottom-0 rounded-r-xl">
-              <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-              <button class="btn btn-neutral">Send</button>
+              <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs chat-input" />
+              <button class="btn btn-neutral chat-input-send-btn">Send</button>
             </div>
           </div>
         </div>
@@ -85,6 +85,9 @@
       type="module"
       src="/client/node_modules/socket.io-client/dist/socket.io.min.js"
     ></script> -->
+    <script src="./assets/js/initializeSocketConn.js" type="module"></script>
+    <script src="./assets/js/initializeChatWindow.js" type="module"></script>
+    <script src="./assets/js/messaging.js" type="module"></script>
     <script type="module" src="./assets/js/work.js"></script>
   </body>
 </html>
